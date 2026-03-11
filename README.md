@@ -1,97 +1,174 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Finance Agent App
 
-# Getting Started
+A comprehensive React Native application for loan management with role-based access control for Admin and Dealer users.
+
+## Features
+
+### Authentication
+- Phone/Email login with password
+- OTP-based login
+- Forgot password functionality
+- Role-based authentication (Admin/Dealer)
+
+### Admin Features
+- **Dashboard**: Overview with stats and recent applications
+- **Dealers Management**: Add, edit, suspend/activate dealers
+- **Loan Applications**: Review, approve, or reject loan applications
+- **Customers Management**: View customer profiles and loan history
+- **Reports**: Analytics and reporting with charts
+- **Profile**: Admin profile and company information
+
+### Dealer Features
+- **Dashboard**: Today's applications, approved loans, EMI tracking
+- **New Loan**: Multi-step loan creation process
+  - Step 1: Product details
+  - Step 2: Loan details with EMI calculation
+  - Step 3: Customer information
+  - Step 4: KYC document upload
+  - Step 5: Review and submit
+- **Customers**: Customer management and profiles
+- **Applications**: Track loan applications status
+- **Profile**: Shop details and commission information
+
+## Tech Stack
+
+- **React Native** 0.84.1
+- **TypeScript**
+- **React Navigation** 6.x
+- **React Native Vector Icons**
+- **React Native Linear Gradient**
+- **Async Storage** for session management
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── context/            # React Context (Auth)
+├── navigation/         # Navigation setup
+│   ├── AppNavigator.tsx
+│   ├── AuthNavigator.tsx
+│   ├── AdminNavigator.tsx
+│   └── DealerNavigator.tsx
+├── screens/            # Screen components
+│   ├── auth/          # Authentication screens
+│   ├── admin/         # Admin-specific screens
+│   └── dealer/        # Dealer-specific screens
+├── theme/             # App theme and styling
+├── types/             # TypeScript type definitions
+└── utils/             # Utility functions
+```
+
+## Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Step 1: Install Dependencies
 
 ```sh
-# Using npm
+npm install
+```
+
+### Step 2: Start Metro
+
+```sh
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### Step 3: Build and run your app
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
+#### Android
 ```sh
-# Using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
+#### iOS
 ```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+# Install CocoaPods dependencies first
+cd ios && pod install && cd ..
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Demo Credentials
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+For testing purposes, use the following credentials:
 
-## Step 3: Modify your app
+### Admin Login
+- **Phone**: 9876543210
+- **Password**: password
 
-Now that you have successfully run the app, let's make changes!
+### Dealer Login
+- **Phone**: 9876543211
+- **Password**: password
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Key Features Implemented
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Authentication System
+- Secure login with role-based access
+- Session persistence using AsyncStorage
+- OTP verification flow
+- Password reset functionality
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Role-Based Navigation
+- Automatic navigation based on user role
+- Separate navigation stacks for Admin and Dealer
+- Protected routes and screens
 
-## Congratulations! :tada:
+### Admin Dashboard
+- Real-time statistics cards
+- Recent loan applications list
+- Quick access to all admin features
+- Modern UI with gradient headers
 
-You've successfully run and modified your React Native App. :partying_face:
+### Dealer Dashboard
+- Today's applications and stats
+- Quick action buttons
+- Recent loans with EMI information
+- Commission tracking
 
-### Now what?
+### Multi-Step Loan Creation
+- 5-step guided process
+- Real-time EMI calculation
+- Document upload interface
+- Form validation and review
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### Modern UI/UX
+- Card-based layouts
+- Gradient headers
+- Status badges with color coding
+- Responsive design
+- Consistent theming
 
-# Troubleshooting
+## Environment Variables
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Create a `.env` file in the root directory for any configuration:
 
-# Learn More
+```env
+API_BASE_URL=https://your-api-url.com
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Troubleshooting
+
+If you're having issues getting the app to run, see the [React Native Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+## Learn More
 
 To learn more about React Native, take a look at the following resources:
 
 - [React Native Website](https://reactnative.dev) - learn more about React Native.
 - [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Finance_Apps
